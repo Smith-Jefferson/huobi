@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface HuobiTradeProductDao extends JpaRepository<HuobiTradeProduct,Long> {
-
+    HuobiTradeProduct findFirstByOrderByDatachange_lasttimeDesc();
 }
