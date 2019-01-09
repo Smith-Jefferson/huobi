@@ -19,9 +19,11 @@ public class HuobiTradeProduct {
     @Column(length = 32)
     private String uname;
     @Column(length = 32)
-    private String price;
+    private Double price;
     @Column(length = 10)
     private String unit;
+    @Column
+    private Double avgPrice;
     @Column
     private Calendar datachange_lasttime;
 
@@ -34,17 +36,25 @@ public class HuobiTradeProduct {
         }
         String[] try1=price.trim().split(" ");
         if(try1.length>1 && StringUtil.isNumeric(try1[0])){
-            this.price = try1[0];
+            this.price = Double.valueOf(try1[0]);
             this.unit = try1[1];
         }
         datachange_lasttime = Calendar.getInstance();
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getAvgPrice() {
+        return avgPrice;
+    }
+
+    public void setAvgPrice(Double avgPrice) {
+        this.avgPrice = avgPrice;
     }
 }
